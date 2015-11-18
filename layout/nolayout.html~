@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+		<title>
+			nolayout	
+		</title>
+		<style>
+			*, :before, :after{
+				-webkit-box-sizing:border-box;
+				-moz-box-sizing:border-box;
+				box-sizing:border-box;	
+			}
+			html,body{
+				margin:0px;
+				padding:0px;
+			}
+			.ltr{
+				background-color:#ededed;	
+			}
+
+		</style>
+
+	</head>
+	<body>
+		<div class="ltr">
+			<div class="logo">
+				logo	
+			</div>
+			<div class="menu">
+				menu	
+			</div>
+			<div class="container">
+				container
+			</div>
+			<div class="share">
+					share
+			</div>
+			<div class="advertisements">
+				advertisements	
+			</div>
+
+		</div>
+
+	</body>
+
+</html>
