@@ -1,0 +1,46 @@
+*, :before, :after{
+	-webkit-box-sizing:border-box;
+	-moz-box-sizing:border-box;
+	-ms-box-sizing:border-box;
+	box-sizing:border-box;
+}
+html,body{
+	margin:0px;
+	padding:0px;
+	background-color:#f3f4f6;
+	font-size:14px;	
+}
+
+.container{
+	padding:10px 12px;
+}
+
+.input-wrapper{
+	background-color:#ffffff;
+	padding:18px 12px;
+	border:1px solid #dadadc;
+	position:relative;	
+	border-radius:4px;
+	margin-bottom:10px;
+}
+
+.code{
+	padding:8px 6px;
+	border:1px solid #fc747e;
+	position:absolute;
+	top:50%;
+	-webkit-transform:translateY(-50%);
+	transform:translateY(-50%);
+	right:12px;
+	border-radius:4px;
+	color:#fffdfd;
+	background-color:#fc7473;
+}
+
+.text{
+	border:none;
+	outline:none;
+}
+.text::-webkit-input-placeholder{
+	color:red;
+}

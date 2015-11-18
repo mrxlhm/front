@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <style>
+		*, :before, :after {
+			-webkit-box-sizing: border-box;
+			   -moz-box-sizing: border-box;
+			        box-sizing: border-box;
+	    }
+    	html, body {
+    		margin: 0;padding: 0;
+    		background-color: #f3f4f6;
+    		font-size: 14px;
+    	}
+    	#pwd {
+    		padding: 10px 12px;
+    	}
+    	.input-wrapper {
+    		position: relative;
+    		border: 1px solid #dadadc;
+    		border-radius: 4px;
+    		background-color: #fff;
+    		padding: 15px 10px;
+			margin-bottom: 10px;
+    	}
+    	.code {
+    		position: absolute;
+    		right: 12px;
+    		top: 50%;
+    		-webkit-transform: translateY(-50%);
+		    		transform: translateY(-50%);
+    		background-color: #fc747e;
+    		color: #fff;
+    		border-radius: 3px;
+    		padding: 8px 6px;
+    	}
+    	.text {
+    		outline: none;
+			border: none;
+			width: 185px;
+			font-size: 14px;
+    	}
+    	.text::-webkit-input-placeholder {
+    		color: #9a9a9a;
+    	}
+    </style>
+	<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		//var p = new page();
+	   	//$("#btn").on("click",p.ajaxForm);
+			
+		$("#btn").on("click",function(){
+			$.ajax({
+				type:'post',
+				url:"ajaxPostForm.php",
+				data:$("#form1").serialize(),
+				success:function(data){
+				console.log(data);	
+				}
+			});
+		});
+	});
+	function page(){
+		this.ajaxForm = function(){
+			$.ajax({
+				type:'post',
+				url:"ajaxPostForm.php",
+				data:$("#form1").serialize(),
+				success:function(data){
+				console.log(data);	
+				}
+			});
+		}
+	}	
+
+</script>
+</head>
+<body>
+	<div id="pwd">
+		<div class="input-wrapper">
+			<input type="text" class="text" placeholder="请输入账号对应的手机号码">
+			<span class="code">获取验证码</span>
+		</div>
+		<div class="input-wrapper">
+			<input type="text" class="text" placeholder="请填写您收到的验证码">
+		</div>
+	</div>
+	<form id = "form1">
+		姓名：<input type="text" name="txtname">
+		电话：<input type="text" name = "txtphone">
+	</form>
+	<input type="button" id="btn" value="Button">
+</body>
+</html>
+
+
+
+
+
