@@ -13,8 +13,9 @@
  */
 
 (function( global, factory ) {
-	console.log(global);
+	
 	if ( typeof module === "object" && typeof module.exports === "object" ) {
+		console.log('BBBBBBBBBBB');
 		// For CommonJS and CommonJS-like environments where a proper `window`
 		// is present, execute the factory and get jQuery.
 		// For environments that do not have a `window` with a `document`
