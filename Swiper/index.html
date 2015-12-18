@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>                            
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width"/>
+<style type="text/css">
+.swiper-container {
+    //width: 100%;
+    height: 200px;
+    
+}  
+.pop{
+	background-color:rgb(128,128,128);
+	z-index:10;
+	position:absolute !important;
+	top:0;
+	left:0;
+	/*opacity:0.5; 
+	-moz-opacity:0.5;
+	-webkit-opacity:0.5;
+	filter:alpha(opacity=50);*/
+	height:100%;
+	display:none;
+}
+</style>
+<link rel="stylesheet" type="text/css" href="../css/swiper.css">
+<script type="text/javascript" src='../js/swiper.js'></script>
+<script type="text/javascript" src='../js/jquip.js'></script>
+<script type="text/javascript" src='../js/jquip.events.js'></script>
+<script type="text/javascript" src='../js/jquip.css.js'></script>
+<script type="text/javascript">
+window.onload = function() {
+	//popUp([]);
+    //initSwiper();
+    $(".button").bind("click",popUp);
+    console.log(document.body.scrollHeight);
+    console.log(document.body.clientHeight);
+  
+}
+function initSwiper(){
+	var mySwiper = new Swiper ('.swiper-container', {
+    initialSlide:1,
+    direction: 'horizontal',
+    loop: false,
+    
+    // 如果需要分页器
+    pagination: '.swiper-pagination',
+    
+    // 如果需要前进后退按钮
+    //nextButton: '.swiper-button-next',
+    //prevButton: '.swiper-button-prev',
+    
+    // 如果需要滚动条
+    //scrollbar: '.swiper-scrollbar',
+    freeMode : false,
+  });
+}
+
+function popUp(){
+	$(".swiper-wrapper").append('<div class="swiper-slide"><img class="mfp-img" alt="undefined" src="http://s.shuaidanbao.com/1450259148_file_name2527.png"></div>');
+	$(".swiper-wrapper").append('<div class="swiper-slide"><img class="mfp-img" alt="undefined" src="http://s.shuaidanbao.com/1450231991_file_name0.jpg" ></div>');
+	$(".swiper-wrapper").append('<div class="swiper-slide"><img class="mfp-img" alt="undefined" src="http://s.shuaidanbao.com/1450231991_file_name1.jpg" ></div>');
+	$(".pop").width(window.Width + document.body.scrollWidth).height(window.Height + document.body.scrollHeight).show();
+	$('.swiper-container').width(window.screen.width);
+	initSwiper();
+	console.log(document.width);
+	
+	$(".pop").width(window.screen.width).height(document.body.scrollHeight).show();
+
+	
+}
+
+</script>
+</head>
+<body style="height:900px;">
+
+<div>
+	这里不是浮层，不是浮层，是浮云这里不是浮层，不是浮层，是浮云这里不是浮层，不是浮层，是浮云这里不是浮层，不是浮层，是浮云这里不是浮层，不是浮层，是浮云这里不是浮层，不是浮层，是浮云这里不是浮层，不是浮层，是浮云这里不是浮层，不是浮层，是浮云这里不是浮层，不是浮层，是浮云这里不是浮层，不是浮层，是浮云这里不是浮层，不是浮层，是浮云这里不是浮层，不是浮层，是浮云这里不是浮层，不是浮层，是浮云这里不是浮层，不是浮层，是浮云这里不是浮层，不是浮层，是浮云这里不是浮层，不是浮层，是浮云这里不是浮层，不是浮层，是浮云这里不是浮层，不是浮层，是浮云这里不是浮层，不是浮层，是浮云这里不是浮层，不是浮层，是浮云这里不是浮层，不是浮层，是浮云这里不是浮层，不是浮层，是浮云这里不是浮层，不是浮层，是浮云这里不是浮层，不是浮层，是浮云这里不是浮层，不是浮层，是浮云这里不是浮层，不是浮层，是浮云
+</div>
+<!-- <div class='pop'>
+	<p>这里是振文正文啊正文这里是振文正文啊正文这里是振文正文啊正文这里是振文正文啊正文这里是振文正文啊正文这里是振文正文啊正文这里是振文正文啊正文这里是振文正文啊正文这里是振文正文啊正文这里是振文正文啊正文这里是振文正文啊正文这里是振文正文啊正文这里是振文正文啊正文这里是振文正文啊正文这里是振文正文啊正文这里是振文正文啊正文这里是振文正文啊正文这里是振文正文啊正文这里是振文正文啊正文</p>
+</div> -->
+<input type="button" value="button" class="button"/>
+
+
+<div class='pop'>
+ <div class="swiper-container">
+    <div class="swiper-wrapper">
+        
+    </div>
+    
+    <div class="swiper-pagination"></div>
+    
+   
+</div>
+</div>
+
+</body>
+</html>
