@@ -5,17 +5,23 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>                            
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width"/>
 <style type="text/css">
-.swiper-container {
-    //width: 100%;
-    height: 200px;
-    
-}  
+.swiper-pagination{
+    bottom:20px !important;
+}
+.swiper-wrapper{
+    height:100% !important;
+}
+
+.swiper-slide{
+    height:100% !important;
+}
 .pop{
 	background-color:rgb(128,128,128);
-	z-index:10;
+	z-index:1;
 	position:absolute !important;
 	top:0;
 	left:0;
+	width:100%;
 	/*opacity:0.5; 
 	-moz-opacity:0.5;
 	-webkit-opacity:0.5;
@@ -34,41 +40,82 @@ window.onload = function() {
 	//popUp([]);
     //initSwiper();
     $(".button").bind("click",popUp);
-    console.log(document.body.scrollHeight);
-    console.log(document.body.clientHeight);
+    //console.log(document.body.scrollHeight);
+    //console.log(document.body.clientHeight);
   
 }
 function initSwiper(){
+    $('.swiper-container').width(window.screen.width).height(window.screen.height);
 	var mySwiper = new Swiper ('.swiper-container', {
     initialSlide:1,
     direction: 'horizontal',
     loop: false,
-    
+    preloadImages:false,
     // 如果需要分页器
     pagination: '.swiper-pagination',
-    
-    // 如果需要前进后退按钮
-    //nextButton: '.swiper-button-next',
-    //prevButton: '.swiper-button-prev',
-    
-    // 如果需要滚动条
-    //scrollbar: '.swiper-scrollbar',
+    autoHeight: true,
     freeMode : false,
+    lazyLoading : true,
+    lazyLoadingInPrevNext : true,
+    lazyLoadingOnTransitionStart : true,
+    onLazyImageReady:function(swiper, slide, image){
+        var left = 0;
+        var top = 0;
+        if(window.screen.width < image.width){
+            image.width = window.screen.width;
+        }
+        else{
+           left = (window.screen.width - image.width) / 2;
+        }
+        if(window.screen.height > image.height + 20){
+            //console.log(window.screen.height - image.height);
+            top  = (window.screen.height-20 -image.height) / 2;
+        }
+        $(image).css("position","absolute").css("top",top + "px").css("left",left + "px");
+    },
+    onClick:function(swiper){
+    	$(".pop").hide();
+    	$(".swiper-wrapper").empty();
+    }
+   
   });
 }
-
-function popUp(){
-	$(".swiper-wrapper").append('<div class="swiper-slide"><img class="mfp-img" alt="undefined" src="http://s.shuaidanbao.com/1450259148_file_name2527.png"></div>');
-	$(".swiper-wrapper").append('<div class="swiper-slide"><img class="mfp-img" alt="undefined" src="http://s.shuaidanbao.com/1450231991_file_name0.jpg" ></div>');
-	$(".swiper-wrapper").append('<div class="swiper-slide"><img class="mfp-img" alt="undefined" src="http://s.shuaidanbao.com/1450231991_file_name1.jpg" ></div>');
-	$(".pop").width(window.Width + document.body.scrollWidth).height(window.Height + document.body.scrollHeight).show();
-	$('.swiper-container').width(window.screen.width);
+var _a = true;
+function popUp(imgs,initIndex){
+	_a = !_a;
+	var $temp = "<div class='swiper-slide'>\
+            		<img class='swiper-lazy'  data-src='$image_url' >\
+            		<div class='swiper-lazy-preloader'></div>\
+        		</div>";
+	var $imgs = [
+					"http://s.shuaidanbao.com/1450259148_file_name2527.png",
+					"http://s.shuaidanbao.com/1450231991_file_name0.jpg",
+					"http://s.shuaidanbao.com/1450231991_file_name1.jpg",
+					"http://s.shuaidanbao.com/1450416934_WU_FILE_0.jpg",
+					"http://s.shuaidanbao.com/1450417125_WU_FILE_0.jpg"
+				];
+	for(var index in $imgs){
+		if(_a){
+			if(index % 2 == 0){
+				$(".swiper-wrapper").append($temp.replace("$image_url",$imgs[index]));
+			}
+			else
+		 	{
+		 		continue;
+		 	}
+		 }
+		 else{
+		 		if(index % 2 != 0){
+					$(".swiper-wrapper").append($temp.replace("$image_url",$imgs[index]));
+				}
+				else
+		 		{
+		 			continue;
+		 		}
+		 	}
+		}
+	$(".pop").show();
 	initSwiper();
-	console.log(document.width);
-	
-	$(".pop").width(window.screen.width).height(document.body.scrollHeight).show();
-
-	
 }
 
 </script>
@@ -86,7 +133,28 @@ function popUp(){
 
 <div class='pop'>
  <div class="swiper-container">
-    <div class="swiper-wrapper">
+    
+    <div class="swiper-wrapper" >
+    	<!-- <div class="swiper-slide">
+            <img class="swiper-lazy"  data-src="http://s.shuaidanbao.com/1450259148_file_name2527.png" >
+            <div class="swiper-lazy-preloader"></div>
+        </div>
+        <div class="swiper-slide">
+            <img class="swiper-lazy"  data-src="http://s.shuaidanbao.com/1450231991_file_name0.jpg">
+            <div class="swiper-lazy-preloader"></div>
+        </div>
+        <div class="swiper-slide">
+            <img class="swiper-lazy"  data-src="http://s.shuaidanbao.com/1450231991_file_name1.jpg">
+            <div class="swiper-lazy-preloader"></div>
+        </div>
+        <div class="swiper-slide">
+            <img class="swiper-lazy"  data-src="http://s.shuaidanbao.com/1450416934_WU_FILE_0.jpg">
+            <div class="swiper-lazy-preloader"></div>
+        </div>
+        <div class="swiper-slide">
+            <img class="swiper-lazy"  data-src="http://s.shuaidanbao.com/1450417125_WU_FILE_0.jpg">
+            <div class="swiper-lazy-preloader"></div>
+        </div> -->
         
     </div>
     

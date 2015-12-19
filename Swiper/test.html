@@ -8,19 +8,14 @@
 .swiper-pagination{
     bottom:20px !important;
 }
-.swiper-slide{
-   // top:50%;
-}
 .swiper-wrapper{
-    //top:50% !important;
-    /*-webkit-transform: translate3d(0px, 0, 0);
-    -moz-transform: translate3d(0px, 0, 0);
-    -o-transform: translate(0px, 0px);
-    -ms-transform: translate3d(0px, 0, 0);
-    transform: translate3d(0px, -50%, 0) !important;*/
+    height:100% !important;
+}
+
+.swiper-slide{
+    height:100% !important;
 }
 .pop{
-	//background-color:rgb(128,128,128);
 	z-index:10;
 	position:absolute !important;
 	top:0;
@@ -43,17 +38,10 @@
 <script type="text/javascript" src='../js/jquip.css.js'></script>
 <script type="text/javascript">
 window.onload = function() {
-	//popUp([]);
     initSwiper();
-    //$(".button").bind("click",popUp);
-    //console.log(document.body.scrollHeight);
-    //console.log(document.body.clientHeight);
-  
 }
 function initSwiper(){
-    //$(".pop-container").width(window.screen.width).height(window.screen.height);
     $('.swiper-container').width(window.screen.width).height(window.screen.height);
-    //$('.swiper-wrapper').css("top","50%").css("transform","translate3d(0px, -50%, 0)");
 	var mySwiper = new Swiper ('.swiper-container', {
     //initialSlide:1,
     direction: 'horizontal',
@@ -87,25 +75,22 @@ function initSwiper(){
        // alert(2);
     },
     onLazyImageReady:function(swiper, slide, image){
+        var left = 0;
+        var top = 0;
         if(window.screen.width < image.width){
             image.width = window.screen.width;
         }
+        else{
+           left = (window.screen.width - image.width) / 2;
+        }
         if(window.screen.height > image.height + 20){
             console.log(window.screen.height - image.height);
-            var top  = (window.screen.height-20 -image.height) / 2;
-            $('.swiper-wrapper').css("top",top + "px")
-            //console.log(top);
+            top  = (window.screen.height-20 -image.height) / 2;
         }
-        //console.log(image.height);
-        //swiper.css("top","-50%");
-        //swiper.css("transform","translateY(-50%)");
-        //console.log(swiper);
+        $(image).css("position","absolute").css("top",top + "px").css("left",left + "px");
     }
    
   });
-    //mySwiper.width = window.screen.width;
-    //mySwiper.setWrapperTranslate(-350,-350);
-    //mySwiper.wrapper.transform("translate('0px', '50%')");
 }
 
 // function popUp(){
