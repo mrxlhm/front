@@ -35,6 +35,13 @@
 <script type="text/javascript" src='../js/jquip.js'></script>
 <script type="text/javascript" src='../js/jquip.events.js'></script>
 <script type="text/javascript" src='../js/jquip.css.js'></script>
+<script id="swiper-container" type="text/html">
+    <div class="swiper-container">
+        <div class="swiper-wrapper" >
+        </div>
+        <div class="swiper-pagination"></div>
+    </div>
+</script>
 <script type="text/javascript">
 window.onload = function() {
 	//popUp([]);
@@ -45,8 +52,8 @@ window.onload = function() {
   
 }
 function initSwiper(){
+    console.log(window);
     $('.swiper-container').width(window.screen.width).height(window.screen.height);
-    console.log(mySwiper);
 	var mySwiper = new Swiper ('.swiper-container', {
     initialSlide:1,
     direction: 'horizontal',
@@ -76,21 +83,16 @@ function initSwiper(){
     },
     onClick:function(swiper){
     	$(".pop").hide();
-        console.log(swiper.slides.length);
-        //swiper = undefined;
-    	$(".swiper-wrapper").empty();
-        //$(".swiper-pagination").empty();
-        //for (var index in swiper.slides) {
-         //   swiper.removeSlide(index)
-            //var slide = mySwiper.slides[i]
-            //slide.html('&lt;p&gt; My index number is '+i+' &lt;/p&gt;')
-        //}
+    	$(".pop").empty();
     }
    
   });
 }
 var _a = true;
 function popUp(imgs,initIndex){
+   var $container = $("#swiper-container").html();
+   $(".pop").append($container);
+   //return;
 	_a = !_a;
 	var $temp = "<div class='swiper-slide'>\
             		<img class='swiper-lazy'  data-src='$image_url' >\
@@ -141,36 +143,7 @@ function popUp(imgs,initIndex){
 
 
 <div class='pop'>
- <div class="swiper-container">
-    
-    <div class="swiper-wrapper" >
-    	<!-- <div class="swiper-slide">
-            <img class="swiper-lazy"  data-src="http://s.shuaidanbao.com/1450259148_file_name2527.png" >
-            <div class="swiper-lazy-preloader"></div>
-        </div>
-        <div class="swiper-slide">
-            <img class="swiper-lazy"  data-src="http://s.shuaidanbao.com/1450231991_file_name0.jpg">
-            <div class="swiper-lazy-preloader"></div>
-        </div>
-        <div class="swiper-slide">
-            <img class="swiper-lazy"  data-src="http://s.shuaidanbao.com/1450231991_file_name1.jpg">
-            <div class="swiper-lazy-preloader"></div>
-        </div>
-        <div class="swiper-slide">
-            <img class="swiper-lazy"  data-src="http://s.shuaidanbao.com/1450416934_WU_FILE_0.jpg">
-            <div class="swiper-lazy-preloader"></div>
-        </div>
-        <div class="swiper-slide">
-            <img class="swiper-lazy"  data-src="http://s.shuaidanbao.com/1450417125_WU_FILE_0.jpg">
-            <div class="swiper-lazy-preloader"></div>
-        </div> -->
-        
-    </div>
-    
-    <div class="swiper-pagination"></div>
-    
-   
-</div>
+ 
 </div>
 
 </body>
